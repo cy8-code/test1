@@ -33,11 +33,15 @@
         </section>
 
         <nav class="preset-bar" aria-label="메뉴 프리셋">
-          <span class="preset-label">오늘의 메뉴판</span>
-          <div class="preset-list" role="group" aria-label="메뉴 종류 선택">
-            <button class="preset-chip is-active" type="button" data-preset="campus" aria-pressed="true">🍱 학식</button>
-            <button class="preset-chip" type="button" data-preset="street" aria-pressed="false">🍢 학교 앞</button>
-            <button class="preset-chip" type="button" data-preset="late" aria-pressed="false">🌙 야식</button>
+          <label class="preset-label" for="preset-select">오늘의 메뉴판</label>
+          <select class="preset-select" id="preset-select" aria-label="프리셋 선택"></select>
+          <div class="preset-actions">
+            <form class="preset-save-form" id="save-preset-form">
+              <label class="visually-hidden" for="new-preset-name">저장할 프리셋 이름</label>
+              <input id="new-preset-name" type="text" maxlength="32" placeholder="프리셋 이름" value="점심 메뉴" required />
+              <button class="preset-action" type="submit">+ 저장</button>
+            </form>
+            <button class="preset-action preset-delete" id="delete-preset" type="button">삭제</button>
           </div>
         </nav>
 
@@ -76,6 +80,11 @@
             </div>
             <p class="menu-caption" id="menu-caption">든든하고 맛있는 학식 메뉴</p>
             <ul class="menu-list" id="menu-list" aria-live="polite"></ul>
+            <form class="add-item-form" id="add-item-form">
+              <label class="visually-hidden" for="new-item-name">추가할 메뉴 이름</label>
+              <input id="new-item-name" name="item" type="text" maxlength="32" placeholder="새 메뉴 이름" required />
+              <button type="submit">+ 메뉴 추가</button>
+            </form>
             <div class="menu-footer">
               <span class="menu-footer-icon" aria-hidden="true">✳</span>
               <span>친구들과 함께 정해도 좋아요</span>
