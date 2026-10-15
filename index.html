@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff9ef" />
+    <meta name="description" content="오늘의 메뉴를 가볍게 정하는 메뉴판 돌림판" />
+    <title>오늘 뭐 먹지? | 메뉴판 돌림판</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="오늘 뭐 먹지? 홈">
+          <span class="brand-mark" aria-hidden="true">냠</span>
+          <span>오늘 뭐 먹지<span class="brand-dot">?</span></span>
+        </a>
+        <div class="topbar-note"><span class="live-dot"></span> 고민은 짧게, 식사는 맛있게</div>
+      </header>
+
+      <main id="top">
+        <section class="intro" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow"><span>오늘의 메뉴 룰렛</span><span class="eyebrow-line"></span><span>01 / 03</span></p>
+            <h1 id="page-title">배고픈 고민,<br /><span>한 번에 돌려!</span></h1>
+            <p class="intro-description">메뉴 고르기 어려운 날엔<br class="mobile-break" /> 룰렛에게 맡겨봐요.</p>
+          </div>
+          <div class="doodle" aria-hidden="true"><span>✳</span><span>오늘은<br />뭐 먹지?</span><span>✳</span></div>
+        </section>
+
+        <nav class="preset-bar" aria-label="메뉴 프리셋">
+          <span class="preset-label">오늘의 메뉴판</span>
+          <div class="preset-list" role="group" aria-label="메뉴 종류 선택">
+            <button class="preset-chip is-active" type="button" data-preset="campus" aria-pressed="true">🍱 학식</button>
+            <button class="preset-chip" type="button" data-preset="street" aria-pressed="false">🍢 학교 앞</button>
+            <button class="preset-chip" type="button" data-preset="late" aria-pressed="false">🌙 야식</button>
+          </div>
+        </nav>
+
+        <section class="workspace" aria-label="메뉴 돌림판">
+          <div class="wheel-panel">
+            <div class="wheel-heading">
+              <div>
+                <p class="section-kicker">LET'S PICK</p>
+                <h2>운명의 메뉴는?</h2>
+              </div>
+              <span class="wheel-count"><span id="item-count">6</span>가지 메뉴</span>
+            </div>
+
+            <div class="wheel-stage">
+              <div class="wheel-shadow" aria-hidden="true"></div>
+              <div class="pointer" aria-hidden="true"><span></span></div>
+              <canvas id="wheel" aria-label="메뉴 룰렛"></canvas>
+              <div class="wheel-center" aria-hidden="true"><span>GO</span><i>!</i></div>
+            </div>
+
+            <button class="spin-button" id="spin-button" type="button">
+              <span class="spin-spark" aria-hidden="true">✦</span>
+              <span>돌려돌려!</span>
+              <span class="spin-arrow" aria-hidden="true">↗</span>
+            </button>
+            <p class="spin-hint" id="spin-hint">버튼을 눌러 오늘의 메뉴를 골라보세요</p>
+          </div>
+
+          <aside class="menu-panel" aria-labelledby="menu-title">
+            <div class="menu-panel-heading">
+              <div>
+                <p class="section-kicker">ON THE MENU</p>
+                <h2 id="menu-title">메뉴판 <span class="bowl-icon" aria-hidden="true">🥢</span></h2>
+              </div>
+              <span class="menu-stamp">오늘은<br />이 중에서!</span>
+            </div>
+            <p class="menu-caption" id="menu-caption">든든하고 맛있는 학식 메뉴</p>
+            <ul class="menu-list" id="menu-list" aria-live="polite"></ul>
+            <div class="menu-footer">
+              <span class="menu-footer-icon" aria-hidden="true">✳</span>
+              <span>친구들과 함께 정해도 좋아요</span>
+            </div>
+          </aside>
+        </section>
+
+        <footer class="page-footer">
+          <span>오늘의 메뉴 고민, 여기서 끝!</span>
+          <span class="footer-squiggle" aria-hidden="true">~ ~ ~</span>
+        </footer>
+      </main>
+    </div>
+
+    <dialog class="result-dialog" id="result-dialog" aria-labelledby="result-title">
+      <button class="dialog-close" id="close-dialog" type="button" aria-label="닫기">×</button>
+      <div class="result-confetti" aria-hidden="true"><span>✦</span><span>✳</span><span>✦</span><span>✳</span><span>✦</span></div>
+      <p class="result-label">오늘의 당첨 메뉴</p>
+      <h2 id="result-title">떡볶이</h2>
+      <p class="result-message">좋아, 오늘은 이거 먹자!</p>
+      <div class="result-actions">
+        <button class="result-again" id="spin-again" type="button">한 번 더 돌리기 <span aria-hidden="true">↻</span></button>
+        <button class="result-dismiss" id="dismiss-dialog" type="button">메뉴 확정!</button>
+      </div>
+    </dialog>
+  </body>
+</html>
